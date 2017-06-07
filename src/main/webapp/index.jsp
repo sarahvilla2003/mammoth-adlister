@@ -8,7 +8,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%! String nameClass = "Pinnacles"; %>
-<%! String role = ""; %>
 <html>
 
 <jsp:include page="partials/head.jsp">
@@ -17,21 +16,19 @@
 
 <body class="container">
 
-<%-- This is a comment --%>
-
-<% role = ${param.role} %>
+<%-- This is a comment we make the decision where --%>
 
 <c:choose>
-    <c:when test="${role == "admin"}">
+    <c:when test="${param.role == 'admin'}">
         <h3>You are an Admin</h3>
     </c:when>
-    <c:when test="${role == "user"}">
+    <c:when test="${param.role == 'user'}">
         <h3>You are an User</h3>
     </c:when>
-    <c:when test="${role == "manager"}">
+    <c:when test="${param.role == 'manager'}">
         <h3>You are a Manager</h3>
     </c:when>
-    <c:when test="${role == null}">
+    <c:when test="${param.role == ''}">
         <h3>You are a Guest</h3>
     </c:when>
 </c:choose>
