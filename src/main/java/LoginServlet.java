@@ -16,4 +16,17 @@ public class LoginServlet extends HttpServlet {
         throws ServletException, IOException {
         request.getRequestDispatcher("/login.jsp").forward(request, response);
     }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        if (username.equals("admin") && password.equals("password")) {
+            response.sendRedirect("/profile");
+        } else {
+            //doGet(request, response);
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
+        }
+    }
 }
