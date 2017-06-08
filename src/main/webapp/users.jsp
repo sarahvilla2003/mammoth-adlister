@@ -7,9 +7,12 @@
     </jsp:include>
 </head>
 <body>
-<jsp:include page="partials/navbar.jsp" />
-<div class="container">
-    <h1>Welcome to the Adlister!</h1>
-</div>
+    <jsp:include page="partials/navbar.jsp" />
+    <div class="container">
+        <h1>Users page</h1>
+        <c:forEach var="instructor" items="${instructors}">
+            <p>Instructor's username: ${instructor.username}</p>
+        </c:forEach>
+    </div>
 </body>
 </html>
