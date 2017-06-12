@@ -15,7 +15,7 @@ CREATE TABLE ads (
   id          INT UNSIGNED NOT NULL AUTO_INCREMENT,
   title       VARCHAR(300),
   description TEXT,
-  user_id     INT UNSIGNED,
+  user_id     INT UNSIGNED NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (user_id) REFERENCES users (id)
 );
