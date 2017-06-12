@@ -4,19 +4,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 /**
- * Created by Fer on 6/8/17.
+ * Created by Fer on 6/7/17.
  */
-@WebServlet(name = "LogoutServlet", urlPatterns = "/logout")
-public class LogoutServlet extends HttpServlet {
+@WebServlet(name = "UsersServlet", urlPatterns = "/users")
+public class UsersServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getSession().removeAttribute("username");
-        request.getSession().invalidate();
-        response.sendRedirect("/login");
+        List<User> users = DaoFactory.getUsersDao().all();
+        request.setAttribute("instructors", users);
+        request.getRequestDispatcher("/users.jsp").forward(request, response);
     }
 }
