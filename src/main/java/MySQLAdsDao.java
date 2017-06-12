@@ -28,10 +28,10 @@ public class MySQLAdsDao implements Ads {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM ads");
             while (resultSet.next()) {
                 ads.add(new Ad(
-                    resultSet.getLong(1),
-                    resultSet.getLong(2),
-                    resultSet.getString(3),
-                    resultSet.getString(4)
+                    resultSet.getLong("id"),
+                    resultSet.getLong("user_id"),
+                    resultSet.getString("title"),
+                    resultSet.getString("description")
                 ));
             }
         } catch (SQLException e) {
