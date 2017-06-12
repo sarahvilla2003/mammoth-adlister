@@ -1,15 +1,16 @@
-/**
- * Created by Fer on 6/7/17.
- */
+import java.sql.SQLException;
+
 public class DaoFactory {
-    private static Users usersDao;
+    private static Ads adsDao;
 
-    public static Users getUsersDao(){
-        // To check if the object of Users is being created already
-        if(usersDao == null){
-            usersDao = new ListUsersDao();
+    public static Ads getAdsDao() {
+        if (adsDao == null) {
+            try {
+                adsDao = new MySQLAdsDao(new Config());
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-        return usersDao;
+        return adsDao;
     }
-
 }
