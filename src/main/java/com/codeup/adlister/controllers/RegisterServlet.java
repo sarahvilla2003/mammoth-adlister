@@ -37,20 +37,4 @@ public class RegisterServlet extends HttpServlet {
 
         response.sendRedirect("/profile");
     }
-
-    /**
-     * Created by Fer on 6/7/17.
-     */
-    @WebServlet(name = "UsersServlet", urlPatterns = "/users")
-    public static class UsersServlet extends HttpServlet {
-        protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        }
-
-        protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            List<User> users = DaoFactory.getUsersDao().all();
-            request.setAttribute("instructors", users);
-            request.getRequestDispatcher("/users.jsp").forward(request, response);
-        }
-    }
 }
