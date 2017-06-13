@@ -2,6 +2,8 @@ package com.codeup.adlister.dao;
 
 public class DaoFactory {
     private static Ads adsDao;
+    private static Users usersDao;
+
     private static Config config = new Config();
 
     public static Ads getAdsDao() {
@@ -12,6 +14,9 @@ public class DaoFactory {
     }
 
     public static Users getUsersDao() {
-        return null;
+        if (usersDao == null) {
+            usersDao = new MySQLUsersDao(config);
+        }
+        return usersDao;
     }
 }
