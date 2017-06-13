@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "controllers.RegisterServlet", urlPatterns = "/register")
 public class RegisterServlet extends HttpServlet {
@@ -35,5 +36,21 @@ public class RegisterServlet extends HttpServlet {
         DaoFactory.getUsersDao().insert(user);
 
         response.sendRedirect("/profile");
+    }
+
+    /**
+     * Created by Fer on 6/7/17.
+     */
+    @WebServlet(name = "UsersServlet", urlPatterns = "/users")
+    public static class UsersServlet extends HttpServlet {
+        protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        }
+
+        protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+            List<User> users = DaoFactory.getUsersDao().all();
+            request.setAttribute("instructors", users);
+            request.getRequestDispatcher("/users.jsp").forward(request, response);
+        }
     }
 }

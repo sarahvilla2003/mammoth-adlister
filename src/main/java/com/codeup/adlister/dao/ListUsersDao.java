@@ -1,3 +1,7 @@
+package com.codeup.adlister.dao;
+
+import com.codeup.adlister.models.User;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +12,6 @@ public class ListUsersDao implements Users{
 
     List<User> users;
 
-    @Override
     public List<User> all()
     {
         if(users == null){
@@ -18,13 +21,17 @@ public class ListUsersDao implements Users{
         return users;
     }
 
-    @Override
     public User getUserById(long id) {
         return null;
     }
 
     @Override
-    public User getUserByEmail(String email) {
+    public User findByUsername(String email) {
+        return null;
+    }
+
+    @Override
+    public Long insert(User user) {
         return null;
     }
 
