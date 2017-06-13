@@ -20,7 +20,9 @@ public class LoginServlet extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doPost(
+        HttpServletRequest request, HttpServletResponse response
+    ) throws IOException, ServletException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
@@ -28,7 +30,7 @@ public class LoginServlet extends HttpServlet {
 
         if (user == null) {
             request.setAttribute("error", "Either your username or password are incorrect");
-            request.getRequestDispatcher("/WEB-INF/login.jsp");
+            request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
             return;
         }
 
