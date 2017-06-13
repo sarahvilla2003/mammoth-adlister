@@ -2,22 +2,22 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <jsp:include page="/partials/head.jsp">
-        <jsp:param name="title" value="View all the ads" />
+    <jsp:include page="/WEB-INF/partials/head.jsp">
+        <jsp:param name="title" value="Viewing All The Ads" />
     </jsp:include>
 </head>
 <body>
-<jsp:include page="/partials/navbar.jsp" />
+<jsp:include page="/WEB-INF/partials/navbar.jsp" />
+
 <div class="container">
-    <div class="row">
-        <h1>Review all the ads</h1>
-    </div>
+    <h1>Here Are all the ads!</h1>
     <c:forEach var="ad" items="${ads}">
-        <section class="col-xs-6">
-            <h1>${ad.title}</h1>
+        <div class="col-md-6">
+            <h2>${ad.title}</h2>
             <p>${ad.description}</p>
-        </section>
+        </div>
     </c:forEach>
 </div>
+
 </body>
 </html>
